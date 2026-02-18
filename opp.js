@@ -1,8 +1,8 @@
-// Inizializza i post cercando nel localStorage, altrimenti crea un array vuoto
+// Inizializza i post dal localStorage
 let posts = JSON.parse(localStorage.getItem('vfind_posts')) || [];
 let currentFilter = 'Tutte';
 
-// Funzione per pubblicare un nuovo post
+// Funzione per pubblicare
 function addPost() {
     const category = document.getElementById('post-category').value;
     const text = document.getElementById('post-text').value;
@@ -13,61 +13,66 @@ function addPost() {
     }
 
     const newPost = {
-        id: Date.now(), // Genera un ID unico basato sul tempo
+        id: Date.now(),
         category: category,
         text: text,
-        comments: []
+        comments: [] // Array per i commenti
     };
 
-    posts.unshift(newPost); // Aggiunge il post in cima alla lista
+    posts.unshift(newPost);
     saveAndRender();
-    document.getElementById('post-text').value = ''; // Pulisce il campo di testo
+    document.getElementById('post-text').value = ''; 
 }
 
-// Funzione per aggiungere un commento a un post specifico
+// Funzione per i commenti
 function addComment(postId) {
     const commentInput = document.getElementById(`comment-input-${postId}`);
+    if (!commentInput) return;
+    
     const commentText = commentInput.value;
-
     if (commentText.trim() === '') return;
 
-    // Trova il post corretto e aggiunge il commento
     const postIndex = posts.findIndex(p => p.id === postId);
     if (postIndex !== -1) {
+        // Fallback di sicurezza se l'array comments non esiste
+        if (!posts[postIndex].comments) {
+            posts[postIndex].comments = [];
+        }
         posts[postIndex].comments.push(commentText);
         saveAndRender();
     }
 }
 
-// Funzione per filtrare i post per categoria
+// Funzione per filtrare
 function filterCategory(category) {
     currentFilter = category;
     renderPosts();
 }
 
-// Salva i dati nel browser e aggiorna lo schermo
+// Salva e aggiorna
 function saveAndRender() {
     localStorage.setItem('vfind_posts', JSON.stringify(posts));
     renderPosts();
 }
 
-// Disegna i post sullo schermo
+// Disegna a schermo
 function renderPosts() {
     const feed = document.getElementById('feed');
-    feed.innerHTML = ''; // Pulisce il feed
+    if (!feed) return; // Sicurezza
+    
+    feed.innerHTML = ''; 
 
-    // Filtra i post se necessario
     const filteredPosts = currentFilter === 'Tutte' 
         ? posts 
         : posts.filter(post => post.category === currentFilter);
 
-    // Genera l'HTML per ogni post
     filteredPosts.forEach(post => {
         const postElement = document.createElement('div');
         postElement.className = 'post';
         
-        // Genera l'HTML per i commenti
-        const commentsHTML = post.comments.map(c => `<div class="comment">${c}</div>`).join('');
+        // Fallback di sicurezza: se post.comments non esiste, usa un array vuoto
+        const safeComments = post.comments || [];
+        const commentsHTML = safeComments.map(c => `<div class="comment">${c}</div>`).join('');
 
         postElement.innerHTML = `
             <span class="post-category">${post.category}</span>
@@ -85,5 +90,12 @@ function renderPosts() {
     });
 }
 
-// Carica i post all'avvio della pagina
-renderPosts();
+// Avvio con blocco di sicurezza (Try/Catch)
+try {
+    renderPosts();
+} catch (error) {
+    console.error("Errore di caricamento dati vecchi, resetto la memoria:", error);
+    localStorage.removeItem('vfind_posts'); // Pulisce i dati corrotti
+    posts = [];
+    renderPosts();
+}
