@@ -13,12 +13,15 @@
         <div class="search-bar">
             <input type="text" placeholder="Cerca in VfindApp...">
         </div>
+        
         <div class="auth-section">
             <button id="login-btn" onclick="login()">Accedi con Google</button>
             <div id="user-info" style="display: none;">
                 <img id="user-pic" src="" alt="Foto profilo">
                 <span id="user-name"></span>
-                <button id="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i></button>
+                <span id="merchant-badge-header" class="merchant-badge" style="display:none;">🏪 <span id="shop-name-display"></span></span>
+                <button id="merchant-btn" onclick="registerMerchant()" style="display:none; background-color: #4CAF50;">Diventa Negoziante</button>
+                <button id="logout-btn" onclick="logout()" title="Esci"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </div>
     </header>
@@ -28,9 +31,9 @@
             <h3>Community</h3>
             <ul id="subVfindApp-list">
                 <li onclick="filterCategory('Tutte')" class="active">🏠 Home (Tutte)</li>
-                <li onclick="filterCategory('Cibo')">🍕 r/Cibo</li>
-                <li onclick="filterCategory('Pasticceria')">🍰 r/Pasticceria</li>
-                <li onclick="filterCategory('Musica')">🎸 r/Musica</li>
+                <li onclick="filterCategory('Cibo')">🍕 v/Cibo</li>
+                <li onclick="filterCategory('Pasticceria')">🍰 v/Pasticceria</li>
+                <li onclick="filterCategory('Musica')">🎸 v/Musica</li>
             </ul>
         </aside>
 
@@ -40,9 +43,9 @@
                 <textarea id="post-text" rows="2" placeholder="Aggiungi i dettagli qui..."></textarea>
                 <div class="post-actions">
                     <select id="post-category">
-                        <option value="Cibo">r/Cibo</option>
-                        <option value="Pasticceria">r/Pasticceria</option>
-                        <option value="Musica">r/Musica</option>
+                        <option value="Cibo">v/Cibo</option>
+                        <option value="Pasticceria">v/Pasticceria</option>
+                        <option value="Musica">v/Musica</option>
                     </select>
                     <button onclick="addPost()">Pubblica</button>
                 </div>

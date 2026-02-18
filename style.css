@@ -280,3 +280,35 @@ button:hover {
     background: #ffebee;
     color: #f44336; /* Diventa Rosso Pericolo */
 }
+
+/* --- STILI PER I NEGOZIANTI (B2B) --- */
+.merchant-badge {
+    background: #FFD700; /* Giallo Oro */
+    color: #856404;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.comment.merchant-comment {
+    background-color: #fffbeb; /* Sfondo dorato chiaro per staccare dal bianco */
+    border-left: 3px solid #FFD700; /* Bordo laterale oro invece che fucsia */
+}
+
+/* Facciamo brillare anche i post principali scritti dai Negozianti */
+.post.merchant-post {
+    border: 2px solid #FFD700;
+}
+
+#merchant-btn:hover {
+    background-color: #45a049 !important;
+}
+
+/* --- COLORI PER I VOTI ATTIVI --- */
+.vote-btn.voted-up { color: #e91e63 !important; }
+.vote-btn.voted-down { color: #7193ff !important; }
