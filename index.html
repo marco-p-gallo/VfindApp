@@ -3,37 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VfindApp - Community</title>
+    <title>VfindApp 🔍</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>VfindApp 🔍</h1>
-        <p>La tua community locale</p>
-        <nav>
-            <button onclick="filterCategory('Tutte')">Tutte</button>
-            <button onclick="filterCategory('Cibo')">Cibo</button>
-            <button onclick="filterCategory('Pasticceria')">Pasticceria</button>
-            <button onclick="filterCategory('Musica')">Musica</button>
-        </nav>
+    <header class="navbar">
+        <div class="logo">VfindApp 🔍</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Cerca in VfindApp...">
+        </div>
     </header>
 
-    <main>
-        <section class="create-post">
-            <h2>Condividi qualcosa</h2>
-            <select id="post-category">
-                <option value="Cibo">Cibo</option>
-                <option value="Pasticceria">Pasticceria</option>
-                <option value="Musica">Musica</option>
-            </select>
-            <textarea id="post-text" rows="3" placeholder="Di cosa hai bisogno o cosa vuoi consigliare? (es. Cerco una pentola da 32...)"></textarea>
-            <button onclick="addPost()">Pubblica</button>
-        </section>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Community</h3>
+            <ul id="subreddit-list">
+                <li onclick="filterCategory('Tutte')" class="active">🏠 Home (Tutte)</li>
+                <li onclick="filterCategory('Cibo')">🍕 r/Cibo</li>
+                <li onclick="filterCategory('Pasticceria')">🍰 r/Pasticceria</li>
+                <li onclick="filterCategory('Musica')">🎸 r/Musica</li>
+            </ul>
+        </aside>
 
-        <section id="feed">
-            </section>
-    </main>
+        <main class="feed-area">
+            <div class="create-post-box">
+                <input type="text" id="post-title" placeholder="Titolo del post (es. Cerco pentola da 32)...">
+                <textarea id="post-text" rows="2" placeholder="Aggiungi i dettagli qui..."></textarea>
+                <div class="post-actions">
+                    <select id="post-category">
+                        <option value="Cibo">r/Cibo</option>
+                        <option value="Pasticceria">r/Pasticceria</option>
+                        <option value="Musica">r/Musica</option>
+                    </select>
+                    <button onclick="addPost()">Pubblica</button>
+                </div>
+            </div>
 
-    <script src="app.js"></script>
+            <div id="feed">
+                </div>
+        </main>
+    </div>
+
+    <script type="module" src="app.js"></script>
 </body>
 </html>
