@@ -4,7 +4,7 @@ import { getFirestore, collection, addDoc, onSnapshot, updateDoc, doc, arrayUnio
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAnmR_HM0r-K_B0h4MwZGAMVYiY3qyyvgI",
+  apiKey: "AIzaSyAnmR_HM0r-K_B0h4MwZGAmVYiY3qyyvgI",
   authDomain: "vfindapp-46cf7.firebaseapp.com",
   projectId: "vfindapp-46cf7",
   storageBucket: "vfindapp-46cf7.firebasestorage.app",
