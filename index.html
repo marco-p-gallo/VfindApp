@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VfindApp - Community</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>VfindApp 🔍</h1>
+        <p>La tua community locale</p>
+        <nav>
+            <button onclick="filterCategory('Tutte')">Tutte</button>
+            <button onclick="filterCategory('Cibo')">Cibo</button>
+            <button onclick="filterCategory('Pasticceria')">Pasticceria</button>
+            <button onclick="filterCategory('Musica')">Musica</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="create-post">
+            <h2>Condividi qualcosa</h2>
+            <select id="post-category">
+                <option value="Cibo">Cibo</option>
+                <option value="Pasticceria">Pasticceria</option>
+                <option value="Musica">Musica</option>
+            </select>
+            <textarea id="post-text" rows="3" placeholder="Di cosa hai bisogno o cosa vuoi consigliare? (es. Cerco una pentola da 32...)"></textarea>
+            <button onclick="addPost()">Pubblica</button>
+        </section>
+
+        <section id="feed">
+            </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
