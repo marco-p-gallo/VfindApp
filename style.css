@@ -264,3 +264,19 @@ button:hover {
     color: #1c1c1c;
     font-size: 0.9rem;
 }
+
+/* --- STILE BOTTONE CANCELLA --- */
+.delete-btn {
+    background: transparent;
+    color: #ccc;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background: #ffebee;
+    color: #f44336; /* Diventa Rosso Pericolo */
+}
