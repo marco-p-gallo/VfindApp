@@ -209,3 +209,58 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+/* --- NUOVI STILI PER LOGIN E UTENTI --- */
+.auth-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+#user-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e91e63;
+}
+
+#logout-btn {
+    background: #f6f7f8;
+    color: #787C7E;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+#logout-btn:hover {
+    background: #e91e63;
+    color: white;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.author-pic {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-name {
+    font-weight: bold;
+    color: #1c1c1c;
+    font-size: 0.9rem;
+}
