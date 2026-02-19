@@ -11,16 +11,26 @@
     <header class="navbar">
         <div class="logo">VfindApp 🔍</div>
         <div class="search-bar">
-            <input type="text" placeholder="Cerca in VfindApp...">
+            <input type="text" id="search-input" placeholder="Cerca in VfindApp..." oninput="renderPosts()">
         </div>
         
         <div class="auth-section">
             <button id="login-btn" onclick="login()">Accedi con Google</button>
-            <div id="user-info" style="display: none;">
+            <div id="user-info" style="display: none; align-items: center; gap: 10px;">
+                <button id="merchant-btn" onclick="registerMerchant()" style="display:none; background-color: #4CAF50; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.85rem;">Diventa Negoziante</button>
+                <span id="merchant-badge-header" class="merchant-badge" style="display:none;">🏪 <span id="shop-name-display"></span></span>
+                
+                <div id="notification-container" style="display:none; position:relative; margin-right: 5px;">
+                    <div style="cursor:pointer; font-size: 1.3rem;" onclick="toggleNotifications()">🔔</div>
+                    <span id="notification-badge" style="display:none; position:absolute; top:-5px; right:-8px; background:#e91e63; color:white; border-radius:50%; padding: 2px 5px; font-size:0.65rem; font-weight:bold;">0</span>
+                    <div id="notification-dropdown" style="display:none; position:absolute; top:35px; right:-10px; width:280px; background:white; border:1px solid #ccc; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15); z-index:1000; padding:0; max-height: 300px; overflow-y: auto;">
+                        <div style="padding: 10px; font-weight: bold; border-bottom: 1px solid #eee; background: #f8f9fa; border-radius: 8px 8px 0 0;">Le tue Notifiche</div>
+                        <div id="notification-list"></div>
+                    </div>
+                </div>
+
                 <img id="user-pic" src="" alt="Foto profilo">
                 <span id="user-name"></span>
-                <span id="merchant-badge-header" class="merchant-badge" style="display:none;">🏪 <span id="shop-name-display"></span></span>
-                <button id="merchant-btn" onclick="registerMerchant()" style="display:none; background-color: #4CAF50;">Diventa Negoziante</button>
                 <button id="logout-btn" onclick="logout()" title="Esci"><i class="fas fa-sign-out-alt"></i></button>
             </div>
         </div>
@@ -28,31 +38,56 @@
 
     <div class="container">
         <aside class="sidebar">
-            <h3>Community</h3>
+            <h3 style="color: #787C7E; font-size: 0.8rem; text-transform: uppercase;">Community</h3>
             <ul id="subVfindApp-list">
-                <li onclick="filterCategory('Tutte')" class="active">🏠 Home (Tutte)</li>
-                <li onclick="filterCategory('Cibo')">🍕 v/Cibo</li>
-                <li onclick="filterCategory('Pasticceria')">🍰 v/Pasticceria</li>
-                <li onclick="filterCategory('Musica')">🎸 v/Musica</li>
+                <li onclick="filterCategory(event, 'Tutte')" class="active">🏠 Home (Tutte)</li>
+                <li onclick="filterCategory(event, 'Cibo')">🍕 v/Cibo</li>
+                <li onclick="filterCategory(event, 'Pasticceria')">🍰 v/Pasticceria</li>
+                <li onclick="filterCategory(event, 'Musica')">🎸 v/Musica</li>
             </ul>
+
+            <div id="shopping-list-section" style="display: none; margin-top: 30px; border-top: 1px solid #ccc; padding-top: 15px;">
+                <h3 style="color: #787C7E; font-size: 0.8rem; text-transform: uppercase;">🛒 La mia spesa</h3>
+                <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+                    <input type="text" id="new-item-input" placeholder="Aggiungi prodotto..." style="flex:1; padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 0.85rem;">
+                    <button onclick="addShoppingItem()" style="padding: 6px 12px; border-radius: 4px; background: #e91e63; color: white; border: none; font-weight: bold; cursor: pointer;">+</button>
+                </div>
+                <ul id="shopping-list-items" style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem;"></ul>
+                <button onclick="searchMyList()" style="width: 100%; margin-top: 15px; background-color: #03a9f4; color: white; border: none; padding: 10px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.2s;">🔍 Cerca chi li ha</button>
+            </div>
         </aside>
 
         <main class="feed-area">
             <div id="create-post-box" class="create-post-box" style="display: none;">
-                <input type="text" id="post-title" placeholder="Titolo del post (es. Cerco pentola da 32)...">
+                <input type="text" id="post-title" placeholder="Titolo del post (es. Scatola di spezie in scadenza)...">
                 <textarea id="post-text" rows="2" placeholder="Aggiungi i dettagli qui..."></textarea>
-                <div class="post-actions">
+                
+                <div class="post-actions" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                     <select id="post-category">
                         <option value="Cibo">v/Cibo</option>
                         <option value="Pasticceria">v/Pasticceria</option>
                         <option value="Musica">v/Musica</option>
                     </select>
-                    <button onclick="addPost()">Pubblica</button>
+                    
+                    <label id="auction-label" style="display:none; color: #ff5722; font-weight: bold; cursor: pointer; align-items: center; gap: 5px;">
+                        <input type="checkbox" id="post-is-auction"> ⏳ Crea Asta Anti-Spreco
+                    </label>
+
+                    <button id="publish-btn" onclick="addPost()">Pubblica</button>
                 </div>
             </div>
             
             <div id="login-prompt" class="create-post-box" style="text-align: center; color: #787C7E;">
                 <p>Effettua l'accesso per pubblicare o commentare nella community!</p>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 15px;">
+                <button id="enable-location-btn" onclick="enableLocation()" style="background: #f1f3f5; color: #333; border: 1px solid #ccc; padding: 6px 12px; border-radius: 15px; cursor: pointer; font-size: 0.85rem; font-weight: bold; transition: 0.2s;">📍 Attiva Posizione</button>
+                
+                <select id="sort-select" onchange="changeSort(this.value)" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 0.85rem; font-weight: bold; outline: none;">
+                    <option value="score">🔥 Ordina per: Popolari (Voti)</option>
+                    <option value="distance">📍 Ordina per: Più Vicini</option>
+                </select>
             </div>
 
             <div id="feed"></div>

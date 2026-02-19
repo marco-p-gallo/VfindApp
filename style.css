@@ -312,3 +312,126 @@ button:hover {
 /* --- COLORI PER I VOTI ATTIVI --- */
 .vote-btn.voted-up { color: #e91e63 !important; }
 .vote-btn.voted-down { color: #7193ff !important; }
+
+/* --- STILE INDIRIZZO NEGOZIO --- */
+.shop-address {
+    font-size: 0.75rem;
+    color: #007BFF; /* Azzurro link */
+    text-decoration: none;
+    margin-left: 8px;
+    font-weight: normal;
+}
+.shop-address:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* --- STILI FASE 2: FAI UN'OFFERTA (STILE VINTED) --- */
+.offer-btn {
+    background-color: #ff9800; /* Arancione Vinted */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.offer-btn:hover {
+    background-color: #e68a00;
+}
+
+/* Sfondo speciale per chi fa un'offerta economica */
+.comment.offer-comment {
+    background-color: #e8f5e9; /* Verdino chiaro */
+    border-left: 3px solid #4CAF50; /* Bordo verde scuro */
+    color: #2e7d32;
+}
+
+/* --- STILI FASE 2: ASTE ANTI-SPRECO --- */
+.post.auction-post {
+    border: 2px solid #ff5722; /* Arancione Urgente */
+    background-color: #fbe9e7; /* Sfondo leggermente aranciato */
+}
+
+.auction-badge {
+    background: #ff5722;
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* --- STILI FASE 2: CAMPANELLA AVVISAMI --- */
+.notify-btn {
+    background-color: #f1f3f5;
+    color: #495057;
+    border: 1px solid #ced4da;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.notify-btn:hover {
+    background-color: #e2e6ea;
+}
+
+/* Quando l'utente ha attivato la campanella diventa azzurro! */
+.notify-btn.active {
+    background-color: #03a9f4; 
+    color: white;
+    border-color: #03a9f4;
+}
+
+.notify-btn.active:hover {
+    background-color: #0288d1;
+}
+
+/* --- STILI LISTA DELLA SPESA PRIVATA --- */
+.shopping-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f6f7f8;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    border-left: 3px solid #e91e63;
+}
+
+.remove-item-btn {
+    color: #f44336;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+.remove-item-btn:hover {
+    color: #d32f2f;
+}
+
+/* --- STILI FASE 4: RECENSIONI E NOTIFICHE --- */
+.rate-btn {
+    background-color: #ffc107; /* Giallo Stelle */
+    color: #333;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transition: 0.2s;
+    margin-left: 5px;
+}
+
+.rate-btn:hover {
+    background-color: #e0a800;
+}
