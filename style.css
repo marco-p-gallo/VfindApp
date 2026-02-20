@@ -435,3 +435,132 @@ button:hover {
 .rate-btn:hover {
     background-color: #e0a800;
 }
+
+/* --- STILI DASHBOARD NEGOZIANTE --- */
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.95rem;
+}
+
+.dashboard-table th, .dashboard-table td {
+    border: 1px solid #eee;
+    padding: 12px;
+    text-align: left;
+}
+
+.dashboard-table th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: bold;
+}
+
+.dashboard-table tr:hover {
+    background-color: #fcfcfc;
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: white;
+    display: inline-block;
+}
+
+.status-available { background-color: #4CAF50; }
+.status-reserved { background-color: #9c27b0; }
+
+/* --- STILI VETRINA NEGOZIANTE --- */
+.vetrina-btn {
+    background-color: #f1f3f5;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transition: 0.2s;
+}
+
+.vetrina-btn:hover { background-color: #e2e6ea; }
+
+.vetrina-btn.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.merchant-badge {
+    cursor: pointer; /* Fa capire che è cliccabile! */
+    transition: transform 0.2s;
+}
+
+.merchant-badge:hover {
+    transform: scale(1.05);
+}
+
+/* --- STILI CHAT PRIVATA --- */
+.chat-btn {
+    background-color: #03a9f4;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chat-btn:hover { background-color: #0288d1; }
+
+.chat-bubble {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.chat-sent {
+    background-color: #dcf8c6; /* Verde stile WhatsApp */
+    align-self: flex-end;
+    border-bottom-right-radius: 3px;
+}
+
+.chat-received {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    align-self: flex-start;
+    border-bottom-left-radius: 3px;
+}
+
+.inbox-item {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.inbox-item:hover { background-color: #f1f3f5; }
+
+/* --- STILI FASE 4: RECENSIONI E NOTIFICHE --- */
+.rate-btn {
+    background-color: #ffc107; /* Giallo Stelle */
+    color: #333;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transition: 0.2s;
+    margin-left: 5px;
+}
+
+.rate-btn:hover {
+    background-color: #e0a800;
+}
