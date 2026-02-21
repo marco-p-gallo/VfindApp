@@ -60,6 +60,7 @@ onAuthStateChanged(auth, (user) => {
         document.getElementById('login-prompt').style.display = 'none';
         document.getElementById('shopping-list-section').style.display = 'block';
         document.getElementById('notification-container').style.display = 'block';
+        document.getElementById('mobile-logout-item').classList.add('auth-active');
 
         userUnsubscribe = onSnapshot(doc(db, "users", user.uid), (docSnap) => {
             if (docSnap.exists()) {
@@ -124,6 +125,7 @@ onAuthStateChanged(auth, (user) => {
         document.getElementById('shopping-list-section').style.display = 'none';
         document.getElementById('notification-container').style.display = 'none';
         document.getElementById('merchant-dashboard-btn').style.display = 'none';
+        document.getElementById('mobile-logout-item').classList.remove('auth-active');
         isCurrentUserMerchant = false; myShoppingList = []; myNotifications = []; allInventory = []; myChats = [];
         hideDashboard(); renderPosts();
     }
